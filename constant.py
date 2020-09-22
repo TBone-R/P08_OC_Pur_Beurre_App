@@ -21,8 +21,8 @@ OOF_KEY_KEPT = ["product_name",
                 ]
 
 ORDER_BY = [
-    "name",
-    "nova",
-    "nutri_score",
-    "label_score"
+    ("name", "name"),
+    ("nova", "nova"),
+    ("nutri_score", "nutri_score"),
+    ("label_score", "label_score")
 ]

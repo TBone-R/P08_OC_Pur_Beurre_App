@@ -31,7 +31,7 @@ class Product(models.Model):
     stores = models.ManyToManyField(Store, related_name='products', blank=True)
 
     def get_absolute_url(self):
-        return reverse("substitute:product", kwargs={"id": self.id})
+        return reverse("product:product", kwargs={"id": self.id})
 
     def get_substitute_url(self):
-        return reverse("substitute:substitutes", kwargs={"id": self.id})
+        return reverse("product:substitutes", kwargs={"id": self.id})

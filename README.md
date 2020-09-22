@@ -23,7 +23,7 @@ client.
 This project uses a django framework.
 
 After installing the requirements using pip install -r requirements.txt or by
-author means, you can use the manage.py makemigration then the manage.py
+author means, you can use the manage.py migrate then the manage.py
 build_sample command before the runserver command to set up the website. 
 
 If you wish to test the code you can do it using manage.py test followed by
