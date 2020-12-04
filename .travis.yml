@@ -4,6 +4,7 @@ python:
 
 before_script:
   - pip install -r requirements.txt
+  - psql -c 'create database Plateforme_Pur_Beurre;' -U postgres
 
 env: DJANGO_SETTINGS_MODULE="pur_beurre.settings.travis"
 
