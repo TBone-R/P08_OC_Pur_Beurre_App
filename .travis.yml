@@ -12,7 +12,7 @@ services:
   - postgresql
 
 script:
-  - ./manage.py test product
+  - python ./manage.py test product
 
 branches:
   only:
