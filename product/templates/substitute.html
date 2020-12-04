@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<style>
+    .bg-origin-product {
+        background-image: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url('{{ origin_product.image_url }}');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        background-color: black;
+        color: white;
+        padding: 5rem;
+    }
+</style>
+
+<section class="page-section" id="result">
+    <div class="container">
+        <div class="justify-content-center text-center bg-origin-product" >
+            <div class="row justify-content-center py-xl-5">
+                <div class="col-lg-8 text-center">
+                    <h3>{{ origin_product.name }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8 text-center">
+                <h3>Vous pouvez remplacer cet aliment par</h3>
+                <hr class="divider my-4" />
+            </div>
+        </div>
+        <div class="container row">
+            {% for instance in object_list %}
+
+            <form class="justify-content-center text-center col-lg-4 col-sm-12 my-2"  id="search"  action="{% url 'account:save'  %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id_substitute" value="{{ instance.id }}">
+                <input type="hidden" name="origin_id" value="{{ origin_product.id }}">
+
+                <a class="align-content-center text-center my-col" href="{{ instance.get_absolute_url }}">
+                    <img class="product-img" src="{{ instance.image_url }}">
+                    <p class="">{{ instance.name }}</p>
+                </a>
+
+                <p class="x">{{ instance.nutri_score }}</p>
+
+                <button class="btn btn-primary col-lg-12 col-md-12" type="submit">
+                    <i class="far fa-save"></i>
+                    Save
+                </button>
+
+            </form>
+
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

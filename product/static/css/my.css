@@ -1,0 +1,23 @@
+.product-img {
+    max-height: 10rem;
+    width: auto;
+    height: auto;
+    margin: auto;
+}
+
+.my-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.x {
+    border: 2px solid Black;
+    border-radius: 999px;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    background: orange;
+    color: black;
+    top: 10px;
+    right: 10px;
+}

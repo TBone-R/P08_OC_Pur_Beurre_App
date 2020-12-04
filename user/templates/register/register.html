@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-section" id="detail">
+    <div class="h-50 container">
+        <form method="POST" class="form-group mx-5 my-col">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Register</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+    .bg-origin-product {
+        background-image: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url('{{ object.image_url }}');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        background-color: black;
+        color: white;
+        padding: 5rem;
+    }
+</style>
+
+<section class="page-section" id="detail">
+    <div class="h-50 align-items-center justify-content-center text-center">
+        <div class="justify-content-center text-center bg-origin-product" >
+            <div class="row justify-content-center py-xl-5">
+                <div class="col-lg-8 text-center">
+                    <h3>{{ object.name }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row no-gutters my-5">
+            <div class="col-lg-6 col-sm-12 text-center">
+                <p>Nuriscore</p>
+                {% if object.nutri_score == "a" %}
+                    {% load static %}
+                    <img type="image/svg+xml" src="{% static 'img/nutriscore-a.svg' %}">
+                {% elif object.nutri_score == "b" %}
+                    <img type="image/svg+xml" src="{% static 'img/nutriscore-b.svg' %}">
+                {% elif object.nutri_score == "c" %}
+                    <img type="image/svg+xml" src="{% static 'img/nutriscore-c.svg' %}">
+                {% elif object.nutri_score == "d" %}
+                    <img type="image/svg+xml" src="{% static 'img/nutriscore-d.svg' %}">
+                {% elif object.nutri_score == "e" %}
+                    <img type="image/svg+xml" src="{% static 'img/nutriscore-e.svg' %}">
+                {% else %}
+                    <img type="image/svg+xml" src="{% static 'img/nutriscore.svg' %}">
+                {% endif %}
+            </div>
+            <div class="col-lg-6 col-sm-12 text-center">
+                <p>Repères nutritionnels (100g)</p>
+                <p>Salt {{ object.salt }}</p>
+                <p>sugars {{ object.sugars }}</p>
+                <p>saturated-fat {{ object.saturated }}</p>
+                <p>fat {{ object.fat }}</p>
+            </div>
+        </div>
+        <div class="justify-content-center text-center ">
+            <a href="{{ object.url }}">
+                <button class="btn btn-primary">
+                    voir la fiche d'openFoodFact
+                </button>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="page-section" id="result">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h3>Résultats</h3>
+                <hr class="divider my-4" />
+            </div>
+        </div>
+        <div class="row">
+            {% for instance in object_list %}
+            <div class="align-content-center text-center col-lg-4 col-sm-12 my-col">
+                    <a class="align-content-center text-center my-col" href="{{ instance.get_substitute_url }}">
+                        <img class="product-img" src="{{ instance.image_url }}">
+                        <p>{{ instance.name }}</p>
+                    </a>
+                    <a class="" href="{{ instance.get_absolute_url }}">detail</a>
+                </p>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
