@@ -13,7 +13,3 @@ services:
 
 script:
   - python ./manage.py test product
-
-branches:
-  only:
-    - test
