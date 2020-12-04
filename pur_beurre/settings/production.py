@@ -6,7 +6,7 @@ from sentry_sdk.integrations.django import DjangoIntegration
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 DEBUG = False
-ALLOWED_HOSTS = [os.environ.get('IP')]
+ALLOWED_HOSTS += [os.environ.get('IP')]
 
 
 DATABASES = {
