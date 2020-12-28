@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-section" id="detail">
+    <div class="h-50 container">
+    <form method="post" class="from-group mx-5 my-col">
+        {% csrf_token %}
+        {{form}}
+        <p>Pas de compte? Enregistre-toi <a href="/register">ici</a></p>
+        <button type="submit" class="btn btn-success">Login</button>
+    </form>
+    </div>
+</section>
+{% endblock %}
