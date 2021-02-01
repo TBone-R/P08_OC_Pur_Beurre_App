@@ -8,6 +8,7 @@ addons:
 env:
   global:
     - MOZ_HEADLESS=1
+  jobs:
     - DJANGO_SETTINGS_MODULE="pur_beurre.settings.travis"
 
 before_script:
