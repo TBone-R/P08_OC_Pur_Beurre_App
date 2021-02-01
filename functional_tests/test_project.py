@@ -1,4 +1,5 @@
 from selenium.webdriver import Firefox
+import geckodriver_autoinstaller
 from selenium.webdriver.firefox.options import Options
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
@@ -6,6 +7,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 class TestProject(StaticLiveServerTestCase):
 
     def setUp(self):
+        geckodriver_autoinstaller.install()
         options = Options()
         options.add_argument('-headless')
         self.browser = Firefox(firefox_options=options)
