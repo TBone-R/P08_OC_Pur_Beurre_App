@@ -2,6 +2,9 @@ language: python
 python:
   - '3.8'
 
+addons:
+  chrome: latest
+
 before_script:
   - pip install -r requirements.txt
   - psql -c 'create database Plateforme_Pur_Beurre;' -U postgres
@@ -13,3 +16,4 @@ services:
 
 script:
   - python ./manage.py test product
+  - python ./manage.py test functional_test
