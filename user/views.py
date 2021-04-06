@@ -1,8 +1,10 @@
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect, reverse, render
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import PasswordChangeView
 from user.models import SavedSubstitute
-from user.form import CustomUserCreationForm, CustomUserChangeForm
+from user.form import CustomUserCreationForm, CustomUserChangeForm, PasswordsChangeForm
 from product.models import Product
 from django.views import View
 from django.views.generic import (
@@ -10,6 +12,16 @@ from django.views.generic import (
     ListView,
     UpdateView
 )
+
+
+class PasswordsChangeView(SuccessMessageMixin, PasswordChangeView):
+    template_name = "registration/change-password.html"
+    form_class = PasswordsChangeForm
+    success_url = reverse_lazy('account:myaccount')
+
+    def get_success_message(self, cleaned_data):
+        print("Votre mot de passe a bien été changé wtf")
+        return "Votre mot de passe a bien été changé"
 
 
 class RegisterCreateView(CreateView):
@@ -66,3 +78,5 @@ class LegalView(View):
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
+
+

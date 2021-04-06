@@ -1,5 +1,5 @@
-from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth import get_user_model, password_validation
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm, ReadOnlyPasswordHashField
 from django import forms
 
 
@@ -39,7 +39,15 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class CustomUserChangeForm(UserChangeForm):
-    password = None
+
+    password = ReadOnlyPasswordHashField(
+        label="Mot de passe",
+        help_text=
+            'Les mot de passe brut ne peuvent pas être affichés '
+            'mais vous pouvez changer votre mot de passe en utilisant '
+            '<a href="{}">ce formulaire</a>.'
+        ,
+    )
 
     class Meta:
         model = get_user_model()
@@ -50,3 +58,24 @@ class CustomUserChangeForm(UserChangeForm):
             'order_by_3': "ordre 3",
             'order_by_4': "ordre 4",
         }
+
+
+class PasswordsChangeForm(PasswordChangeForm):
+
+    old_password = forms.CharField(
+        label="Ancien mot de passe",
+        strip=False,
+        widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'autofocus': True}),
+    )
+
+    new_password1 = forms.CharField(
+        label="Nouveau mot de passe",
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
+        strip=False,
+        help_text=help_password(),
+    )
+    new_password2 = forms.CharField(
+        label="Confirmation du mot de passe",
+        strip=False,
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
+    )

@@ -95,11 +95,11 @@ class Command(BaseCommand):
 
                         if request_and_object[0] == categories:
                             for item in list_to_save:
-                                new_product[0].categories.add(item)
+                                new_product.categories.add(item)
 
                 try:
-                    new_product[0].label_score = len(labels)
+                    new_product.label_score = len(labels)
                 except TypeError:
-                    new_product[0].label_score = 0
+                    new_product.label_score = 0
 
-                new_product[0].save()
+                new_product.save()

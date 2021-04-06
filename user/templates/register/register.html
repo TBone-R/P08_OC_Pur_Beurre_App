@@ -2,6 +2,15 @@
 {% block content %}
 <section class="page-section" id="detail">
     <div class="h-50 container">
+        <div class="container">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-warning">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
         <form method="POST" class="form-group mx-5 my-col">
         {% csrf_token %}
         {{ form.as_p }}
